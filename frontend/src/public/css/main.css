@@ -1,0 +1,71 @@
+.game-card {
+  background: #2c3e50;
+  color: white;
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  margin: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.coin {
+  width: 100px;
+  height: 100px;
+  background: #f1c40f;
+  border-radius: 50%;
+  line-height: 100px;
+  margin: 20px auto;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border: 5px solid #d4ac0d;
+}
+
+.slot-machine {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.spinning { animation: flip 0.1s infinite; }
+.blur { filter: blur(2px); }
+
+@keyframes flip {
+  0% { transform: rotateX(0); }
+  100% { transform: rotateX(360deg); }
+}
+
+.fairness-note { font-size: 0.7rem; color: #bdc3c7; word-break: break-all; }
+
+.reels-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 10px;
+  border: 4px solid #f1c40f;
+  margin-bottom: 20px;
+}
+
+.reel {
+  width: 70px;
+  height: 90px;
+  background: white;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+.spinning-reel {
+  animation: blur-spin 0.1s linear infinite;
+}
+
+@keyframes blur-spin {
+  0% { transform: translateY(-5px); filter: blur(0px); }
+  50% { transform: translateY(5px); filter: blur(2px); }
+  100% { transform: translateY(-5px); filter: blur(0px); }
+}
