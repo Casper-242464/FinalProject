@@ -31,19 +31,39 @@ async function main() {
 
   console.log("All contracts deployed and configured!");
 
-  const contractsDir = __dirname + "/../../frontend/artifacts/contracts";
-  const casinoAddress = await casino.getAddress();
+  const contractsDir = __dirname + "/../../frontend/src/contracts";
+  const artifactsDir = __dirname + "/../artifacts/contracts";
 
   if (!fs.existsSync(contractsDir)) {
     fs.mkdirSync(contractsDir, { recursive: true });
   }
 
+  console.log("Updating frontend contract files...");
+
   fs.writeFileSync(
     contractsDir + "/contract-address.json",
     JSON.stringify({ 
-        Casino: casinoAddress,
+        Casino: await casino.getAddress(),
     }, undefined, 2)
   );
+
+  const casinoArtifact = JSON.parse(
+    fs.readFileSync(artifactsDir + "/Casino.sol/Casino.json", "utf8")
+  );
+  fs.writeFileSync(
+    contractsDir + "/Casino.json",
+    JSON.stringify(casinoArtifact, null, 2)
+  );
+
+  const tokenArtifact = JSON.parse(
+    fs.readFileSync(artifactsDir + "/LoyaltyToken.sol/LoyaltyToken.json", "utf8")
+  );
+  fs.writeFileSync(
+    contractsDir + "/LoyaltyToken.json",
+    JSON.stringify(tokenArtifact, null, 2)
+  );
+
+  console.log("Frontend contract files updated successfully!");
 }
 
 main()

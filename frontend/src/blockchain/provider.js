@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
-import casinoAddress from "../../artifacts/contracts/contract-address.json";
-import casinoABI from "../../artifacts/contracts/Casino.sol/Casino.json";
-import tokenABI from "../../artifacts/contracts/LoyaltyToken.sol/LoyaltyToken.json";
+import casinoAddress from "../contracts/contract-address.json";
+import casinoABI from "../contracts/Casino.json";
+import tokenABI from "../contracts/LoyaltyToken.json";
 
 // We store the provider/signer outside so we can reuse them
 let provider;
@@ -19,7 +19,7 @@ export const initConnection = async () => {
 
       // 3. Create Contract Instances
       const casinoContract = new ethers.Contract(
-        casinoAddress.Address, 
+        casinoAddress.Casino,
         casinoABI.abi || casinoABI, // Handles different hardhat artifact formats
         signer
       );

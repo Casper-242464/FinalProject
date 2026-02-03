@@ -7,7 +7,7 @@ export const placeBet = async (amountInEth) => {
 
   const provider = new ethers.BrowserProvider(window.ethereum);
   const signer = await provider.getSigner();
-  const casinoContract = new ethers.Contract(contractAddress.Address, casinoABI, signer);
+  const casinoContract = new ethers.Contract(contractAddress.Casino, casinoABI.abi || casinoABI, signer);
 
   try {
     // Convert ETH string (e.g. "0.1") to Wei

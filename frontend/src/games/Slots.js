@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { generateResult } from './FairnessEngine.js';
 import { placeBet, resolveGame } from '../blockchain/casinoActions.js';
-import '../public/css/main.css';
+import '../css/main.css';
 
 const Symbols = ["🍒", "🍋", "🍊", "🔔", "⭐", "🍇", "💎", "7️⃣"];
 
